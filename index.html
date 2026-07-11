@@ -1,0 +1,280 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Revendo — Vends 2x plus vite sur Vinted, Leboncoin & Depop</title>
+<style>
+  :root{
+    --bg:#0f0f14;
+    --panel:#17171f;
+    --panel2:#1f2029;
+    --accent:#7c5cff;
+    --accent2:#43e0a7;
+    --text:#f2f2f7;
+    --muted:#9a9aab;
+    --border:#2a2b36;
+  }
+  *{box-sizing:border-box; margin:0; padding:0;}
+  body{
+    font-family:-apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+    background:var(--bg);
+    color:var(--text);
+    line-height:1.5;
+  }
+  a{color:inherit;}
+  .wrap{max-width:1080px; margin:0 auto; padding:0 24px;}
+
+  header{
+    padding:20px 0;
+    border-bottom:1px solid var(--border);
+    position:sticky; top:0; background:rgba(15,15,20,0.85); backdrop-filter:blur(8px); z-index:10;
+  }
+  header .wrap{display:flex; align-items:center; justify-content:space-between;}
+  .logo{font-weight:800; font-size:20px; letter-spacing:-0.5px;}
+  .logo span{color:var(--accent2);}
+  .nav-cta{
+    background:var(--accent); color:white; border:none; padding:10px 18px;
+    border-radius:8px; font-weight:600; font-size:14px; cursor:pointer;
+  }
+
+  .hero{padding:80px 0 60px; text-align:center;}
+  .tag{
+    display:inline-block; background:var(--panel2); border:1px solid var(--border);
+    color:var(--accent2); font-size:13px; font-weight:600; padding:6px 14px; border-radius:999px;
+    margin-bottom:24px;
+  }
+  h1{font-size:44px; font-weight:800; letter-spacing:-1px; max-width:760px; margin:0 auto 20px;}
+  h1 .accent{color:var(--accent2);}
+  .subtitle{font-size:19px; color:var(--muted); max-width:560px; margin:0 auto 36px;}
+  .cta-row{display:flex; gap:12px; justify-content:center; flex-wrap:wrap; margin-bottom:16px;}
+  .btn-primary{
+    background:var(--accent); color:white; border:none; padding:16px 28px;
+    border-radius:10px; font-weight:700; font-size:16px; cursor:pointer;
+  }
+  .btn-secondary{
+    background:transparent; color:var(--text); border:1px solid var(--border); padding:16px 28px;
+    border-radius:10px; font-weight:600; font-size:16px; cursor:pointer;
+  }
+  .microcopy{font-size:13px; color:var(--muted);}
+
+  section{padding:60px 0;}
+  .section-title{font-size:30px; font-weight:800; text-align:center; letter-spacing:-0.5px; margin-bottom:8px;}
+  .section-sub{text-align:center; color:var(--muted); max-width:520px; margin:0 auto 44px; font-size:16px;}
+
+  .steps{display:grid; grid-template-columns:repeat(3,1fr); gap:20px;}
+  .step{background:var(--panel); border:1px solid var(--border); border-radius:16px; padding:28px;}
+  .step-num{
+    width:36px; height:36px; border-radius:10px; background:var(--panel2);
+    color:var(--accent2); display:flex; align-items:center; justify-content:center;
+    font-weight:800; margin-bottom:16px; font-size:16px;
+  }
+  .step h3{font-size:17px; margin-bottom:8px;}
+  .step p{color:var(--muted); font-size:14px;}
+
+  .demo{
+    background:var(--panel); border:1px solid var(--border); border-radius:20px;
+    padding:36px; display:grid; grid-template-columns:1fr 1fr; gap:28px; align-items:center;
+  }
+  .demo-col h4{font-size:12px; text-transform:uppercase; letter-spacing:1px; color:var(--muted); margin-bottom:12px;}
+  .before-box{
+    background:#0b0b10; border:1px dashed var(--border); border-radius:12px; padding:20px;
+    font-size:14px; color:#c6c6d0;
+  }
+  .before-box .fake-photo{
+    height:120px; background:linear-gradient(135deg,#26262f,#1a1a22); border-radius:8px; margin-bottom:14px;
+    display:flex; align-items:center; justify-content:center; color:var(--muted); font-size:12px;
+  }
+  .after-box{
+    background:linear-gradient(180deg, rgba(124,92,255,0.08), rgba(67,224,167,0.05));
+    border:1px solid rgba(124,92,255,0.35); border-radius:12px; padding:20px;
+  }
+  .after-box .fake-photo{
+    height:120px; background:linear-gradient(135deg,#2c2540,#1a1a22); border-radius:8px; margin-bottom:14px;
+    display:flex; align-items:center; justify-content:center; color:var(--accent2); font-size:12px; font-weight:600;
+  }
+  .after-box .title-line{font-weight:700; margin-bottom:6px; font-size:15px;}
+  .after-box .desc-line{color:#c6c6d0; font-size:13px; margin-bottom:10px;}
+  .price-tag{
+    display:inline-block; background:var(--accent2); color:#0b0b10; font-weight:800;
+    padding:4px 10px; border-radius:6px; font-size:13px;
+  }
+
+  .stat-bar{
+    display:flex; justify-content:center; gap:48px; flex-wrap:wrap; padding:40px 0;
+    border-top:1px solid var(--border); border-bottom:1px solid var(--border); margin:20px 0;
+  }
+  .stat{text-align:center;}
+  .stat .num{font-size:28px; font-weight:800; color:var(--accent2);}
+  .stat .lbl{font-size:13px; color:var(--muted); margin-top:4px;}
+
+  .pricing{display:grid; grid-template-columns:1fr 1fr; gap:20px; max-width:640px; margin:0 auto;}
+  .plan{background:var(--panel); border:1px solid var(--border); border-radius:16px; padding:28px;}
+  .plan.highlight{border-color:var(--accent); position:relative;}
+  .plan.highlight::before{
+    content:"Accès anticipé -50%"; position:absolute; top:-12px; left:20px;
+    background:var(--accent); color:white; font-size:11px; font-weight:700; padding:4px 10px; border-radius:6px;
+  }
+  .plan h3{font-size:16px; margin-bottom:6px;}
+  .plan .price{font-size:32px; font-weight:800; margin:10px 0;}
+  .plan .price span{font-size:14px; color:var(--muted); font-weight:400;}
+  .plan ul{list-style:none; margin:16px 0; padding:0;}
+  .plan li{color:var(--muted); font-size:13px; padding:4px 0;}
+  .plan li::before{content:"✓ "; color:var(--accent2);}
+
+  .waitlist{
+    background:var(--panel); border:1px solid var(--border); border-radius:20px;
+    padding:48px 32px; text-align:center;
+  }
+  .waitlist h2{font-size:28px; margin-bottom:10px;}
+  .waitlist p{color:var(--muted); margin-bottom:28px; max-width:440px; margin-left:auto; margin-right:auto;}
+  form{display:flex; gap:10px; max-width:420px; margin:0 auto; flex-wrap:wrap; justify-content:center;}
+  input[type="email"]{
+    flex:1; min-width:220px; padding:14px 16px; border-radius:10px; border:1px solid var(--border);
+    background:#0b0b10; color:var(--text); font-size:15px;
+  }
+  input[type="email"]::placeholder{color:var(--muted);}
+  .form-note{font-size:12px; color:var(--muted); margin-top:14px;}
+
+  footer{padding:32px 0; text-align:center; color:var(--muted); font-size:13px; border-top:1px solid var(--border);}
+
+  @media (max-width:720px){
+    h1{font-size:30px;}
+    .steps{grid-template-columns:1fr;}
+    .demo{grid-template-columns:1fr;}
+    .pricing{grid-template-columns:1fr;}
+    .stat-bar{gap:28px;}
+  }
+</style>
+</head>
+<body>
+
+<header>
+  <div class="wrap">
+    <div class="logo">Revend<span>o</span></div>
+    <button class="nav-cta" onclick="document.getElementById('waitlist').scrollIntoView({behavior:'smooth'})">Accès anticipé</button>
+  </div>
+</header>
+
+<section class="hero">
+  <div class="wrap">
+    <span class="tag">🇫🇷 Fait pour Vinted · Leboncoin · Depop</span>
+    <h1>Vends tes affaires <span class="accent">2x plus vite</span>, sans passer 20 minutes par annonce</h1>
+    <p class="subtitle">Envoie une photo prise au téléphone. Revendo génère le titre, la description qui vend, le prix conseillé — et nettoie la photo. Prêt à coller en 30 secondes.</p>
+    <div class="cta-row">
+      <button class="btn-primary" onclick="document.getElementById('waitlist').scrollIntoView({behavior:'smooth'})">Je réserve mon accès anticipé</button>
+      <button class="btn-secondary" onclick="document.getElementById('demo').scrollIntoView({behavior:'smooth'})">Voir un exemple</button>
+    </div>
+    <p class="microcopy">3 annonces gratuites à l'essai · aucune carte requise</p>
+  </div>
+</section>
+
+<section>
+  <div class="wrap">
+    <div class="stat-bar">
+      <div class="stat"><div class="num">39%</div><div class="lbl">des achats de vêtements se font désormais en seconde main*</div></div>
+      <div class="stat"><div class="num">~20 min</div><div class="lbl">temps moyen pour rédiger une bonne annonce à la main</div></div>
+      <div class="stat"><div class="num">30 sec</div><div class="lbl">avec Revendo, photo + mots-clés → annonce prête</div></div>
+    </div>
+  </div>
+</section>
+
+<section>
+  <div class="wrap">
+    <h2 class="section-title">Comment ça marche</h2>
+    <p class="section-sub">Pas de compte compliqué, pas de prompt à écrire.</p>
+    <div class="steps">
+      <div class="step">
+        <div class="step-num">1</div>
+        <h3>Prends une photo</h3>
+        <p>Comme tu le ferais normalement, avec ton téléphone, même mal cadrée.</p>
+      </div>
+      <div class="step">
+        <div class="step-num">2</div>
+        <h3>Ajoute 2-3 mots-clés</h3>
+        <p>"Pull laine, taille M, jamais porté" — Revendo comprend et complète.</p>
+      </div>
+      <div class="step">
+        <div class="step-num">3</div>
+        <h3>Copie-colle ton annonce</h3>
+        <p>Titre optimisé, description qui donne envie, prix conseillé, photo nettoyée.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section id="demo">
+  <div class="wrap">
+    <h2 class="section-title">Avant / Après</h2>
+    <p class="section-sub">Même objet, même photo de départ.</p>
+    <div class="demo">
+      <div class="demo-col">
+        <h4>Sans Revendo</h4>
+        <div class="before-box">
+          <div class="fake-photo">photo prise à l'arrache</div>
+          <div class="title-line" style="font-weight:600;">"Pull bleu taille M"</div>
+          <div>Pas de description. Prix au hasard. 0 vue en 3 jours.</div>
+        </div>
+      </div>
+      <div class="demo-col">
+        <h4>Avec Revendo</h4>
+        <div class="after-box">
+          <div class="fake-photo">fond nettoyé, luminosité corrigée</div>
+          <div class="title-line">Pull en laine mérinos bleu marine – Taille M – Jamais porté</div>
+          <div class="desc-line">Doux, chaud, coupe intemporelle. Parfait pour l'automne. Aucun défaut, étiquette encore présente. Envoi rapide et soigné 📦</div>
+          <span class="price-tag">Prix conseillé : 24€</span>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section>
+  <div class="wrap">
+    <h2 class="section-title">Tarif</h2>
+    <p class="section-sub">Gratuit pour essayer. Abonnement léger si tu revends souvent.</p>
+    <div class="pricing">
+      <div class="plan">
+        <h3>Découverte</h3>
+        <div class="price">0€</div>
+        <ul>
+          <li>3 annonces gratuites</li>
+          <li>Texte + prix conseillé</li>
+          <li>Sans engagement</li>
+        </ul>
+      </div>
+      <div class="plan highlight">
+        <h3>Vendeur régulier</h3>
+        <div class="price">4,99€ <span>/mois</span></div>
+        <ul>
+          <li>Annonces illimitées</li>
+          <li>Nettoyage photo inclus</li>
+          <li>Optimisé par plateforme</li>
+        </ul>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section id="waitlist">
+  <div class="wrap">
+    <div class="waitlist">
+      <h2>Sois parmi les premiers</h2>
+      <p>L'outil est en cours de construction. Laisse ton email pour un accès anticipé et -50% à vie sur l'abonnement.</p>
+      <form onsubmit="event.preventDefault(); alert('Merci ! (ceci est une page de test — branche un vrai formulaire Tally/Google Form ou Stripe pour capter les vraies inscriptions)');">
+        <input type="email" placeholder="ton@email.com" required>
+        <button class="btn-primary" type="submit">Je m'inscris</button>
+      </form>
+      <p class="form-note">Aucun spam. Un email quand l'outil est prêt.</p>
+    </div>
+  </div>
+</section>
+
+<footer>
+  <div class="wrap">
+    *Source : étude sur les tendances d'achat de vêtements de seconde main, 2026 — page de test à but de validation, Revendo n'est pas encore un produit fonctionnel.
+  </div>
+</footer>
+
+</body>
+</html>
